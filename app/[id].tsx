@@ -1,4 +1,10 @@
-import { View, Text, ActivityIndicator, StyleSheet, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  StyleSheet,
+  FlatList,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
 import { supabase } from "@/src/lib/supabase";
@@ -26,10 +32,10 @@ const MovieDetails = () => {
 
   //Fetch Similar Movies Based on Embeddings
   useEffect(() => {
-    console.log("Movies Embeddings")
-    if (!movie?.embedding)
-       
-      {return;}
+    console.log("Movies Embeddings");
+    if (!movie?.embedding) {
+      return;
+    }
 
     const fetchSimilarMovies = async () => {
       const { data } = await supabase.rpc("match_movies", {
@@ -53,10 +59,7 @@ const MovieDetails = () => {
 
       <Text style={styles.similar}>Similar Movies</Text>
 
-      <FlatList
-      data={similarMovies}
-      renderItem={MovieItem}
-      />
+      <FlatList data={similarMovies} renderItem={MovieItem} />
     </View>
   );
 };

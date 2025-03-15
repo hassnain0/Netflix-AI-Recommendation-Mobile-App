@@ -1,9 +1,12 @@
-import { pipeline, env } from "@xenova/transformers";
+import {
+  pipeline,
+  env
+} from "@xenova/transformers";
 
 // Configuration for Deno runtime
 env.useBrowserCache = false;
 
-const pipe = await pipeline("feature-extraction", "Supabase/gte-small");  
+const pipe = await pipeline("feature-extraction", "Supabase/gte-small");
 
 // Generate the embedding from the user input
 export const generateEmbedding = async (text) => {
